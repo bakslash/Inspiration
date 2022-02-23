@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom'
   
   useEffect(() => {
        dispatch(viewUsers())   
-       console.log('testing twice',users);
+       
   }, [dispatch])
   
 
