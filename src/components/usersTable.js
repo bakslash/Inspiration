@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { viewUsers, updateUsers } from '../actions/users'
+import { viewUsers} from '../actions/users'
 import { NavLink } from 'react-router-dom'
-
 
  const Users = () => {
 
-  //const [users, setUsers] = useState(null)
   const users = useSelector(state => state.users);
   const dispatch = useDispatch();
   
-
-  
   useEffect(() => {
        dispatch(viewUsers())   
+       console.log('testing twice',users);
   }, [])
-
-  
   
 
   return (

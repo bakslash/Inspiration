@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import ApiServices from '../api/services'
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux"
+import { useParams } from "react-router-dom"
 import { updateUsers } from '../actions/users'
 
 export const EditUser = (props) => {
@@ -16,22 +16,23 @@ export const EditUser = (props) => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    const getUser = async (id) =>{
-      const response= await  ApiServices.viewUsers(id)
-      setValues(response.data)
-    }
-    useEffect(()=>{
-        getUser(id)
-    },[id])
+   
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value })
+        
+        
     }
 
     const handleSave = () => {
-
-    dispatch(updateUsers(values.id, values))
+    const data = {
+        name: values.name,
+        email: values.email,
+        bio: values.bio,
+        occupation: values.occupation
+    }
+    dispatch(updateUsers(id, data))
     }
     
     return (
@@ -57,15 +58,15 @@ export const EditUser = (props) => {
                                 </th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Occupation
-                                </th>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Email
+                                  Email
                                 </th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Bio
+                                </th>
+                                <th
+                                    className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                     Occupation
                                 </th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -82,22 +83,26 @@ export const EditUser = (props) => {
                                     <input type="text"
                                         className="border border-black rounded"
                                         onChange={handleChange}
+                                        name='name'
                                         value={values.name} />
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-m">
                                     <input type="text"
                                         className="border border-black rounded"
                                         onChange={handleChange}
+                                        name='email'
                                         value={values.email} />
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-m">
                                     <input type="text" className="border border-black rounded"
                                         onChange={handleChange}
+                                        name='bio'
                                         value={values.bio} />
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-m">
                                     <input type="text" className="border border-black rounded"
                                         onChange={handleChange}
+                                        name='occupation'
                                         value={values.occupation} />
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-m">
