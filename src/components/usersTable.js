@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
   useEffect(() => {
        dispatch(viewUsers())   
        
-  }, [dispatch])
+  }, [dispatch,users])
   
 
   return (
