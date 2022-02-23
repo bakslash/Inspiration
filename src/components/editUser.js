@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import ApiServices from '../api/services'
 import { useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
 import { updateUsers } from '../actions/users'
 
 export const EditUser = (props) => {
@@ -16,15 +15,11 @@ export const EditUser = (props) => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
-   
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value })
-        
-        
     }
-
+    let navigate =useNavigate()
     const handleSave = () => {
     const data = {
         name: values.name,
@@ -33,8 +28,10 @@ export const EditUser = (props) => {
         occupation: values.occupation
     }
     dispatch(updateUsers(id, data))
+
+    navigate('/')
     }
-    
+
     return (
         <div className="bg-white p-8 rounded-md w-full ">
             <div className=" flex items-center justify-between pb-6">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { viewUsers} from '../actions/users'
 import { NavLink } from 'react-router-dom'
@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
   useEffect(() => {
        dispatch(viewUsers())   
        console.log('testing twice',users);
-  }, [])
+  }, [dispatch])
   
 
   return (

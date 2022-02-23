@@ -1,9 +1,6 @@
-
 import './App.css';
 import Routes from './routes'
 import {useLocation, useNavigate} from 'react-router'
-
-
 
 export function withRouter( Child ) {
   return ( props ) => {
@@ -15,10 +12,7 @@ export function withRouter( Child ) {
 function App() {
   return (
    <>
-      
       <Routes />
-      
-     
    </>
   );
 }
